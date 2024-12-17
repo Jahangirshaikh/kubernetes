@@ -1,0 +1,87 @@
+What is Kubernetes?
+	
+
+
+Container Benefits
+	1. Mobility
+		Isolated namespaces for each container Identical experience running locally or in the cloud.
+	2. Efficiency
+		Less resources required to run  Allows for better utilization of available hardware.
+	3. Speed
+		Deployements take seconds or minutes to deploy because less resources needed to run.
+		
+Challeneges
+	1. Deployement
+		Individual deployment model is unsustainable in large container environments.
+	2. Scaling
+		Dynamically scaling based on environment needs is unavailable.
+	3. Updates
+		Difficult to update containers with zero downtime
+	4. Networking
+		Unable to handle communicate inside and outside of network
+	5. Affinity
+		Manually determining which containers can share or not share hosts can become complex.
+	6. Health
+		No centralized management of hardware and software failures.
+
+What is an Orchestrator?
+	Provides centralized management layer for contanarized applications.Kubernetes has become the most popular option.
+
+Benefits
+	1. Abstraction
+		Declare state using YAML file, and Kubernetes does the rest.
+	2. Resource Allocation
+		Determines the most efficient and fault-tolerant allocation of resources.
+	3. Elastic Scale
+		Increases or decreases resources automatically when needed.
+	4. Networking
+		Provides network management and load balancing.
+	5. Updates
+		Rolling updates to minimize downtime.
+	6. Self Healing
+		Restart or replace failed containers automatically for high availibility.
+
+
+What is a cluster?
+	1. Together as one
+		Group of computers(nodes) working together as a single system
+	2. Shared Networking
+		Nodes are all connected each other on a shared network
+	3. Centralized Mangement
+		Utilizes centralized management software control and coordinate cluster-cluster related tasks
+
+Architecture
+	1. Control Plane
+		Handles the orchestration tasks by managing and controlling the worker nodes in the cluster
+	2. Worker Node
+		Runs application workloads in Pods and accepts instructions from the control plane.
+			Pods - Collection of containers running on the same machine
+
+
+CONTROL Plane
+	components
+		1. kube-apiserver
+			Used to expose the kubernetes API, which handles all the comms in and out of the cluster.
+		
+		2. etcd
+			Persistent key-value database that holds the desired state of the entire cluster
+			
+		3. scheduler
+			Handles all the scheduling(placement) of workloads by determining the best location on all the nodes
+			
+		4. controller
+			Monitors and responds to events that occur in the cluster to maintain desired state.
+			
+		5. Kubectl
+			command-line to intereact with kube-apiserver
+
+
+Example-story
+	
+	We need to deploy two instances in a cluster
+		
+		step1 - add the requirement in YAML file
+		step2 - execute the instruction in kubectl
+					kubectl >> kube-apiserver >> etcd (check the difference b/w current and desired state and respond back to kube-apiserver)
+				    kube-apiserver >> scheduler(prepares best place to deploy the instances and respond back)
+					kube-apiserver >> controller(executes the task)

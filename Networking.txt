@@ -1,0 +1,48 @@
+Networking and Storage in Kubernetes
+
+	#Kubernestes Networking Conditions
+		
+		1. Pods to Pods	
+			All Pods on all nodes Can talk to each other without using Network address translation(NAT)
+		
+		2. Nodes to pods
+			Nodes should be able to talk to their Pods without NAT
+		
+		3. Agents
+			Agents on nodes such as kubelete can talk to all Nodes and Pods
+			
+			
+	#Services
+		1. Single entity
+			One or more pods that perform same task are grouped together by using selector labels
+		
+		2. Endpoint
+			When created, a service receives an Ip address, DNS name and IP port
+			
+		3. Internal and External
+			Services provide access to pods from internal application or from external users
+		
+		# 3 types of service
+			
+			1. clusterIP
+				Adds internal IP to Pods
+			
+			2. nodePort
+				Adds static port to Pods
+			
+			3. LoadBalancer
+				Uses Cloud-provided load balancer for external access
+			
+		# Volumes
+			Ephemeral
+				-Lifetime follows the pods
+				-Loses data when Pod is destroyed
+				-will not lose data if container restarts
+				-used for temporary data like cache
+			
+			persistent
+				-Lifetime does not follow pods
+				-will not lose data when pod is destroyed
+				-Used for databases and messaging queues
+				
+			

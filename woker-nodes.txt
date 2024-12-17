@@ -1,0 +1,38 @@
+Kubernetes
+		
+
+Worker Nodes
+	components
+		1. Kubelet
+			Agent that runs on every node which allows to run on Kubernetes, checks health and state of a node via comms with control plane through kube-apiserver
+		
+		2. Kube-proxy
+			Network proxy that runs the network rules on the node
+		
+		3. Container Runtime
+			Software that the container instance runs in (Azure defaults to Docker)
+			
+
+Kubernetes Objects
+	Pod
+		A Unit of deployement that is a logical group of one or more containers that live on the same machine
+	Service
+		Provides networking b/w nodes, pods, and users of the application
+	Deployement
+		Description of the desired state of the pods
+
+
+Kubernetes Deployements
+	3 levels od Deployement objects
+		In Kubernetes there are diff ways to deploy a pod and all these options build on each other
+			1. pod template
+				Describes how want the pod deployed
+				
+				2. ReplicaSet
+					Maintains defined number of stable pod instances 
+					
+					3. Deployement
+						Describes desired state of replicaSet and pods 
+						
+Rolling Updates
+	--------------
